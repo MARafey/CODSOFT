@@ -113,9 +113,34 @@ public:
             }
         }
     }
+
+    bool check_full()
+    {
+        int count = 0;
+        for (int k = 0; k < 2; k++)
+        {
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    if (board[i][j] == P[k].getSymbol())
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        if (count == 9)
+        {
+            cout << "Draw!" << endl;
+            exit(0);
+        }
+        return false;
+    }
+
     void Play()
     {
-        while (1)
+        while (check_full() == false)
         {
             system("cls");
             int x, y;
